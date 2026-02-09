@@ -1,0 +1,90 @@
+mode: daily
+seed: 42
+
+data:
+  open_path: data/open.parquet
+  high_path: data/high.parquet
+  low_path: data/low.parquet
+  close_path: data/close.parquet
+  volume_path: data/volume.parquet
+  amount_path: data/amount.parquet
+  marketcap_path: data/marketcap.parquet
+  start_date: 2000-01-01
+  end_date:
+  max_tickers: 800
+  min_history_days: 750
+  liquidity_field: amount
+  market_index_close_path: data/market_index_close.parquet
+  market_index_column: KOSPI
+
+research:
+  max_minutes: 8
+  stage1_top_k: 3
+  final_top_n: 2
+  quick_splits: 2
+  walkforward:
+    train_years: 8
+    test_years: 2
+    step_years: 1
+  costs:
+    fee_bps: 5.0
+    slippage_bps: 5.0
+  stability:
+    short_window_splits: 3
+    ewma_span_splits: 3
+  scoring:
+    weight_oos_sharpe: 0.55
+    weight_oos_avg_return: 40.0
+    weight_oos_consistency: 0.35
+    weight_oos_mdd_penalty: 0.25
+    weight_short_long_gap_penalty: 18.0
+    weight_split_std_penalty: 10.0
+    weight_patience_run_penalty: 0.35
+    weight_ewma_return_bonus: 10.0
+    weight_short_long_hit_gap: 0.10
+  patterns:
+    - name: bb_width_breakout
+      description: Volatility contraction breakout
+      params:
+        lookback: [20]
+        width_q: [0.20]
+        band_k: [2.0]
+        hold_days: [5]
+    - name: ma_pullback
+      description: Trend pullback continuation
+      params:
+        fast: [20]
+        slow: [60]
+        pullback_pct: [-0.04]
+        hold_days: [5]
+    - name: donchian_volume_breakout
+      description: Donchian breakout with volume confirmation
+      params:
+        lookback: [20]
+        volume_window: [20]
+        volume_mult: [1.2]
+        hold_days: [10]
+  market_filter:
+    enabled: false
+    type: above_ma
+    ma_window: 120
+
+literature:
+  static_pdf: static/패턴은 정말 존재하는가.pdf
+  summary_path: research/memory/legacy_book_summary.md
+  max_pages: 20
+  max_chars: 6000
+  cache_path: research/memory/legacy_book_cache.yaml
+  use_cache: true
+  refresh_cache: false
+  recent_sources_path: configs/recent_sources.yaml
+  require_recent_evidence: true
+
+report:
+  output_root: reports
+  save_tables: true
+
+memory:
+  ledger_path: research/memory/ledger.parquet
+  backlog_path: research/memory/backlog.md
+  lessons_path: research/memory/lessons.md
