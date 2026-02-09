@@ -74,3 +74,11 @@
 - donchian_volume_breakout|lookback=20,volume_mult=1.2,volume_window=20|hold=10 -> 인접 파라미터 검증: {"lookback": 20, "volume_mult": 1.2, "volume_window": 20} (short_long_gap=-0.0059, patience_run=1)
 - ma_pullback|fast=20,pullback_pct=-0.04,slow=60|hold=5 -> 인접 파라미터 검증: {"fast": 20, "pullback_pct": -0.04, "slow": 60} (short_long_gap=-0.0004, patience_run=2)
 
+## 2026-02-09 (daily)
+후속 검증 후보:
+- ma_pullback|fast=10,pullback_pct=-0.03,slow=120|hold=10 -> 인접 파라미터 검증: {"fast": 10, "pullback_pct": -0.03, "slow": 120} (short_long_gap=-0.0037, patience_run=3)
+- ma_pullback|fast=10,pullback_pct=-0.04,slow=120|hold=10 -> 인접 파라미터 검증: {"fast": 10, "pullback_pct": -0.04, "slow": 120} (short_long_gap=-0.0035, patience_run=3)
+- ma_pullback|fast=10,pullback_pct=-0.03,slow=60|hold=10 -> 인접 파라미터 검증: {"fast": 10, "pullback_pct": -0.03, "slow": 60} (short_long_gap=-0.0049, patience_run=3)
+- ma_pullback|fast=10,pullback_pct=-0.04,slow=60|hold=10 -> 인접 파라미터 검증: {"fast": 10, "pullback_pct": -0.04, "slow": 60} (short_long_gap=-0.0046, patience_run=3)
+- ma_pullback|fast=10,pullback_pct=-0.05,slow=120|hold=10 -> 인접 파라미터 검증: {"fast": 10, "pullback_pct": -0.05, "slow": 120} (short_long_gap=-0.0036, patience_run=3)
+

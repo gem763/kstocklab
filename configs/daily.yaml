@@ -19,8 +19,8 @@ data:
 
 research:
   max_minutes: 8
-  stage1_top_k: 3
-  final_top_n: 2
+  stage1_top_k: 10
+  final_top_n: 5
   quick_splits: 2
   walkforward:
     train_years: 8
@@ -46,24 +46,24 @@ research:
     - name: bb_width_breakout
       description: Volatility contraction breakout
       params:
-        lookback: [20]
-        width_q: [0.20]
-        band_k: [2.0]
-        hold_days: [5]
+        lookback: [20, 40]
+        width_q: [0.15, 0.20, 0.25]
+        band_k: [1.8, 2.0]
+        hold_days: [5, 10]
     - name: ma_pullback
       description: Trend pullback continuation
       params:
-        fast: [20]
-        slow: [60]
-        pullback_pct: [-0.04]
-        hold_days: [5]
+        fast: [10, 20]
+        slow: [60, 120]
+        pullback_pct: [-0.03, -0.04, -0.05]
+        hold_days: [5, 10]
     - name: donchian_volume_breakout
       description: Donchian breakout with volume confirmation
       params:
-        lookback: [20]
+        lookback: [20, 40]
         volume_window: [20]
-        volume_mult: [1.2]
-        hold_days: [10]
+        volume_mult: [1.1, 1.2, 1.4]
+        hold_days: [5, 10]
   market_filter:
     enabled: false
     type: above_ma
